@@ -392,7 +392,7 @@ function cleanURL() {
 }
 window.addEventListener('hashchange', cleanURL);
 window.addEventListener('load', cleanURL);
-</script></head><body><header><nav><a href="#proiecte">Proiecte</a><a href="#despre">Despre</a><a href="#servicii">Servicii</a><a href="#contact">Contact</a></nav><a class="logo" href="/" aria-label="Pagina principală">
+</script></head><body><header><nav><a href="/#proiecte">Proiecte</a><a href="/#despre">Despre</a><a href="/#servicii">Servicii</a><a 	href="/#contact">Contact</a></nav><a class="logo" href="/" aria-label="Pagina principală">
   <img src="imagini/logo/ISM (2).png" alt="ISM Unique Interior Design">
 </a></header><main id="top"><section class="hero"><div><p>Interior design studio · Iași | București</p><h1>STUDIO DE DESIGN<br/>INTERIOR PREMIUM</h1><p>Eleganță în fiecare detaliu.</p></div></section><section <section class="section intro" style="padding-bottom:20px"><div><span class="eyebrow">01 / Abordarea mea</span><h2>Design care se simte</h2></div><p>Cred în interioare în care fiecare detaliu are un rol. De la alegerea materialelor până la echilibrul proporțiilor, urmăresc să creez spații elegante, confortabile și armonioase.</p></section><section class="section" id="proiecte" style="padding-top:20px"><div class="section-heading"><div><span class="eyebrow">02 / Portofoliu</span></div></div><div class="project-grid"><article class="project"><a class="project-link" href="	proiecte/soft-modern-living/"><div class="imgwrap"><img src="imagini/proiect-1/C86A8991-HDR.jpg" alt="Residence No. 01" loading="lazy" style="object-position: center 60%;"></div><h3>Soft Modern Living</h3><small>Rezidențial · Apartament</small></a></article><article class="project"><a class="project-link" href="proiecte/warm-neutrals-and-sage/"><div class="imgwrap"><img src="imagini/proiect-1/C86A0045-HDR.jpg" alt="Soft Geometry" loading="lazy"/></div><h3>Warm Neutrals and Sage</h3><small>Rezidențial · Apartament</small></a></article><article class="project"><a class="project-link" href="proiecte/quiet-elegance/"><div class="imgwrap"><img src="imagini/proiect-1/DSC06759-Enhanced-NR.jpg" alt="Natural Balance" loading="lazy"/></div><h3>Quiet Elegance</h3><small>Rezidențial · Apartament</small></a></article><article class="project"><a class="project-link" href="proiecte/ba-villa/"><div class="imgwrap"><img src="imagini/proiect-1/4.jpg" alt="" loading="lazy"></div><h3>BA Villa</h3><small>Rezidențial · Vila</small></a></article><article class="project">
   <a class="project-link" href="proiecte/cloud-residence/">
@@ -526,6 +526,24 @@ document.addEventListener('dragstart', function(e) {
   }
 });
 </script>
+<script>
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const id = this.getAttribute('href').split('#')[1];
+        const section = document.getElementById(id);
 
+        if (section) {
+            e.preventDefault();
+
+            section.scrollIntoView({
+                behavior: 'smooth'
+            });
+
+            history.replaceState(null, '', '/');
+        }
+    });
+});
+</script>
+</body>
 
 </html>
