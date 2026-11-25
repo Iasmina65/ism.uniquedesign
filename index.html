@@ -386,10 +386,11 @@ header .logo img {
 </style>
 <script>
 function cleanURL() {
-  if (window.location.hash) {
-    history.replaceState(null, '', window.location.pathname + window.location.search);
-  }
+    if (window.location.hash || window.location.pathname === '/index.html') {
+        history.replaceState(null, '', '/' + window.location.search);
+    }
 }
+
 window.addEventListener('hashchange', cleanURL);
 window.addEventListener('load', cleanURL);
 </script></head><body><header><nav><a href="/#proiecte">Proiecte</a><a href="/#despre">Despre</a><a href="/#servicii">Servicii</a><a 	href="/#contact">Contact</a></nav><a class="logo" href="/" aria-label="Pagina principală">
@@ -526,24 +527,7 @@ document.addEventListener('dragstart', function(e) {
   }
 });
 </script>
-<script>
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        const id = this.getAttribute('href').split('#')[1];
-        const section = document.getElementById(id);
 
-        if (section) {
-            e.preventDefault();
-
-            section.scrollIntoView({
-                behavior: 'smooth'
-            });
-
-            history.replaceState(null, '', '/');
-        }
-    });
-});
-</script>
 </body>
 
 </html>
